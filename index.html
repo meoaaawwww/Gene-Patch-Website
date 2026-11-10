@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Gene Patch | Smart Genetic Screening</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <style>
+ :root {
+ --primary: #0f4c81;
+ --secondary: #00b4d8;
+ --accent: #2a9d8f;
+ --bg-light: #f8f9fa;
+ --text-dark: #212529;
+ --text-light: #6c757d;
+ --white: #ffffff;
+ --danger: #e63946;
+ --warning: #f4a261;
+ --safe: #2a9d8f;
+ }
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Inter', sans-serif;
+ }
+
+ body {
+ background-color: var(--bg-light);
+ color: var(--text-dark);
+ line-height: 1.6;
+ overflow-x: hidden;
+ }
+
+ h1, h2, h3 {
+ font-family: 'Poppins', sans-serif;
+ color: var(--primary);
+ }
+
+ /* Navigation */
+ nav {
+ position: fixed;
+ top: 0;
+ width: 100%;
+ background: rgba(255, 255, 255, 0.95);
+ backdrop-filter: blur(10px);
+ padding: 1rem 5%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+ z-index: 1000;
+ }
+
+ .logo {
+ font-family: 'Poppins', sans-serif;
+ font-weight: 700;
+ font-size: 1.5rem;
+ color: var(--primary);
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ }
+
+ .logo i {
+ color: var(--secondary);
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 2rem;
+ }
+
+ .nav-links a {
+ text-decoration: none;
+ color: var(--text-dark);
+ font-weight: 500;
+ transition: color 0.3s;
+ }
+
+ .nav-links a:hover {
+ color: var(--secondary);
+ }
+
+ /* Hero Section */
+ .hero {
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 0 10%;
+ background: linear-gradient(135deg, #e0f7fa 0%, #f8f9fa 100%);
+ padding-top: 80px;
+ }
+
+ .hero-content {
+ max-width: 50%;
+ }
+
+ .hero-content h1 {
+ font-size: 3.5rem;
+ line-height: 1.1;
+ margin-bottom: 1.5rem;
+ background: linear-gradient(90deg, var(--primary), var(--secondary));
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+
+ .hero-content p {
+ font-size: 1.2rem;
+ color: var(--text-light);
+ margin-bottom: 2rem;
+ }
+
+ .btn {
+ display: inline-block;
+ padding: 12px 30px;
+ background: var(--primary);
+ color: var(--white);
+ text-decoration: none;
+ border-radius: 30px;
+ font-weight: 600;
+ transition: transform 0.3s, box-shadow 0.3s;
+ border: none;
+ cursor: pointer;
+ }
+
+ .btn:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 10px 20px rgba(15, 76, 129, 0.2);
+ }
+
+ .hero-visual {
+ width: 400px;
+ height: 400px;
+ background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070') center/cover;
+ border-radius: 50%;
+ box-shadow: 0 20px 50px rgba(0, 180, 216, 0.3);
+ animation: float 6s ease-in-out infinite;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ }
+
+ .hero-visual::after {
+ content: '\f0fb'; /* DNA Icon */
+ font-family: "Font Awesome 6 Free";
+ font-weight: 900;
+ font-size: 8rem;
+ color: rgba(255,255,255,0.8);
+ }
+
+ @keyframes float {
+ 0% { transform: translateY(0px); }
+ 50% { transform: translateY(-20px); }
+ 100% { transform: translateY(0px); }
+ }
+
+ /* General Sections */
+ section {
+ padding: 5rem 10%;
+ }
+
+ .section-title {
+ text-align: center;
+ font-size: 2.5rem;
+ margin-bottom: 3rem;
+ }
+
+ /* Problem Section */
+ .problem-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 2rem;
+ }
+
+ .card {
+ background: var(--white);
+ padding: 2rem;
+ border-radius: 15px;
+ box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+ transition: transform 0.3s;
+ border-top: 5px solid var(--secondary);
+ }
+
+ .card:hover {
+ transform: translateY(-10px);
+ }
+
+ .card i {
+ font-size: 2.5rem;
+ color: var(--secondary);
+ margin-bottom: 1rem;
+ }
+
+ /* How It Works */
+ .how-it-works {
+ background: var(--white);
+ }
+
+ .steps-container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 2rem;
+ margin-top: 2rem;
+ }
+
+ .step {
+ flex: 1;
+ min-width: 200px;
+ text-align: center;
+ padding: 2rem;
+ background: var(--bg-light);
+ border-radius: 15px;
+ position: relative;
+ }
+
+ .step-number {
+ width: 40px;
+ height: 40px;
+ background: var(--primary);
+ color: var(--white);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: bold;
+ margin: 0 auto 1rem;
+ }
+
+ /* Simulation Section */
+ .simulation-section {
+ background: linear-gradient(135deg, #1a2a6c, #0f4c81, #00b4d8);
+ color: var(--white);
+ padding: 5rem 10%;
+ }
+
+ .simulation-section h2 {
+ color: var(--white);
+ text-align: center;
+ margin-bottom: 1rem;
+ }
+ 
+ .simulation-subtitle {
+ text-align: center;
+ margin-bottom: 3rem;
+ opacity: 0.8;
+ }
+
+ .simulator-container {
+ display: flex;
+ background: rgba(255,255,255,0.1);
+ border-radius: 20px;
+ overflow: hidden;
+ box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255,255,255,0.2);
+ flex-wrap: wrap;
+ }
+
+ .sim-controls {
+ flex: 1;
+ padding: 3rem;
+ min-width: 300px;
+ }
+
+ .sim-output {
+ flex: 1;
+ padding: 3rem;
+ background: rgba(0,0,0,0.2);
+ min-width: 300px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ }
+
+ .control-group {
+ margin-bottom: 2rem;
+ }
+
+ .control-group label {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 0.5rem;
+ font-weight: 600;
+ }
+
+ .control-group input[type="range"] {
+ width: 100%;
+ cursor: pointer;
+ accent-color: var(--secondary);
+ }
+ 
+ .control-group select {
+ width: 100%;
+ padding: 10px;
+ border-radius: 5px;
+ border: none;
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ }
+
+ .risk-gauge {
+ width: 150px;
+ height: 150px;
+ border-radius: 50%;
+ background: #333;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 2.5rem;
+ font-weight: bold;
+ margin-bottom: 1.5rem;
+ border: 8px solid var(--safe);
+ transition: all 0.5s ease;
+ }
+
+ .risk-label {
+ font-size: 1.5rem;
+ font-weight: 700;
+ margin-bottom: 1rem;
+ transition: color 0.5s ease;
+ }
+
+ .risk-advice {
+ font-size: 1.1rem;
+ opacity: 0.9;
+ max-width: 300px;
+ }
+
+ /* Science Section */
+ .science-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ gap: 2rem;
+ }
+
+ .science-card {
+ background: var(--white);
+ padding: 2rem;
+ border-radius: 15px;
+ text-align: center;
+ box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+ }
+
+ .science-card h3 {
+ color: var(--accent);
+ margin-bottom: 1rem;
+ }
+
+ /* Ethics & Sustainability */
+ .ethics-split {
+ display: flex;
+ gap: 4rem;
+ align-items: center;
+ flex-wrap: wrap;
+ }
+
+ .ethics-content {
+ flex: 1;
+ }
+
+ .ethics-content ul {
+ list-style: none;
+ margin-top: 1.5rem;
+ }
+
+ .ethics-content ul li {
+ margin-bottom: 1rem;
+ display: flex;
+ align-items: flex-start;
+ gap: 10px;
+ }
+
+ .ethics-content ul li i {
+ color: var(--accent);
+ margin-top: 5px;
+ }
+
+ /* Footer */
+ footer {
+ background: var(--primary);
+ color: var(--white);
+ text-align: center;
+ padding: 3rem 10%;
+ }
+
+ footer h3 {
+ color: var(--white);
+ margin-bottom: 1rem;
+ }
+
+ .team-list {
+ display: flex;
+ justify-content: center;
+ gap: 2rem;
+ flex-wrap: wrap;
+ margin: 1.5rem 0;
+ font-size: 1.1rem;
+ }
+
+ .team-list span {
+ background: rgba(255,255,255,0.1);
+ padding: 5px 15px;
+ border-radius: 20px;
+ }
+
+ /* Responsive */
+ @media (max-width: 768px) {
+ .hero {
+ flex-direction: column;
+ text-align: center;
+ padding-top: 120px;
+ }
+ .hero-content {
+ max-width: 100%;
+ margin-bottom: 3rem;
+ }
+ .hero-visual {
+ width: 300px;
+ height: 300px;
+ }
+ .nav-links {
+ display: none;
+ }
+ }
+ </style>
+</head>
+<body>
+
+ <!-- Navigation -->
+ <nav>
+ <div class="logo"><i class="fa-solid fa-dna"></i> GenePatch</div>
+ <div class="nav-links">
+ <a href="#problem">The Problem</a>
+ <a href="#how-it-works">How It Works</a>
+ <a href="#simulation">Live Simulator</a>
+ <a href="#science">The Science</a>
+ <a href="#ethics">Ethics & Future</a>
+ </div>
+ </nav>
+
+ <!-- Hero Section -->
+ <header class="hero">
+ <div class="hero-content">
+ <h1>Smart Genetic Screening Patch</h1>
+ <p>Turning scientific insights into wearable technology. A non-invasive, AI-powered patch that predicts dehydration and heat-stress risks in extreme climates.</p>
+ <a href="#simulation" class="btn">Try the Live Simulator</a>
+ </div>
+ <div class="hero-visual"></div>
+ </header>
+
+ <!-- The Problem Section -->
+ <section id="problem">
+ <h2 class="section-title">Addressing Heat-Related Health Risks</h2>
+ <div class="problem-grid">
+ <div class="card">
+ <i class="fa-solid fa-temperature-high"></i>
+ <h3>Dehydration Risk</h3>
+ <p>Extreme temperatures in regions like the UAE significantly increase dehydration risks, leading to severe health consequences if not addressed promptly.</p>
+ </div>
+ <div class="card">
+ <i class="fa-solid fa-clock-rotate-left"></i>
+ <h3>Late Detection</h3>
+ <p>Delayed recognition of symptoms often leads to emergency medical cases, resulting in higher morbidity and mortality rates among vulnerable populations.</p>
+ </div>
+ <div class="card">
+ <i class="fa-solid fa-users-rays"></i>
+ <h3>Genetic Variability</h3>
+ <p>Each individual's susceptibility to heat stress varies based on their unique genetic makeup, making it difficult to predict and prevent effectively.</p>
+ </div>
+ </div>
+ </section>
+
+ <!-- How It Works -->
+ <section id="how-it-works" class="how-it-works">
+ <h2 class="section-title">How The Gene Patch Works</h2>
+ <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light);">The Gene Patch merges genetic, physiological, and environmental data for a comprehensive risk assessment. It uses simulated genetic data to ensure user privacy.</p>
+ 
+ <div class="steps-container">
+ <div class="step">
+ <div class="step-number">1</div>
+ <i class="fa-solid fa-dna" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+ <h3>Genetic Susceptibility</h3>
+ <p>Assesses simulated unique genetic makeup to determine individual responses to heat.</p>
+ </div>
+ <div class="step">
+ <div class="step-number">2</div>
+ <i class="fa-solid fa-droplet" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+ <h3>Hydration Indicators</h3>
+ <p>Real-time sweat analysis monitors hydration levels and electrolyte balance non-invasively.</p>
+ </div>
+ <div class="step">
+ <div class="step-number">3</div>
+ <i class="fa-solid fa-sun" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+ <h3>Heat Exposure</h3>
+ <p>Environmental condition data is collected to understand contextual risk factors.</p>
+ </div>
+ <div class="step">
+ <div class="step-number">4</div>
+ <i class="fa-solid fa-microchip" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+ <h3>AI Integration</h3>
+ <p>Advanced algorithms analyze real-time data to predict risk levels and send timely alerts.</p>
+ </div>
+ </div>
+ </section>
+
+ <!-- Live Simulation Section -->
+ <section id="simulation" class="simulation-section">
+ <h2>AI Prediction Simulator</h2>
+ <p class="simulation-subtitle">Adjust the data inputs below to see how the Gene Patch AI calculates personalized risk.</p>
+ 
+ <div class="simulator-container">
+ <!-- Controls -->
+ <div class="sim-controls">
+ <div class="control-group">
+ <label>
+ <span>Genetic Susceptibility</span>
+ </label>
+ <select id="genetics">
+ <option value="1">Low Susceptibility</option>
+ <option value="2" selected>Moderate Susceptibility</option>
+ <option value="3">High Susceptibility</option>
+ </select>
+ </div>
+ 
+ <div class="control-group">
+ <label>
+ <span>Hydration Level (Sweat Analysis)</span>
+ <span id="hydration-val">70%</span>
+ </label>
+ <input type="range" id="hydration" min="10" max="100" value="70">
+ </div>
+ 
+ <div class="control-group">
+ <label>
+ <span>Environmental Heat</span>
+ <span id="temp-val">35°C</span>
+ </label>
+ <input type="range" id="temp" min="20" max="50" value="35">
+ </div>
+ </div>
+
+ <!-- Output -->
+ <div class="sim-output">
+ <div class="risk-gauge" id="gauge">0</div>
+ <div class="risk-label" id="risk-label">Calculating...</div>
+ <div class="risk-advice" id="risk-advice">Processing real-time data...</div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Scientific Foundation -->
+ <section id="science">
+ <h2 class="section-title">The Science of Heat Response</h2>
+ <div class="science-grid">
+ <div class="science-card">
+ <h3>Heat Stress</h3>
+ <p>Genes alter physiological adaptations that protect against dehydration and heat-related illness.</p>
+ </div>
+ <div class="science-card">
+ <h3>Water Balance</h3>
+ <p>Genetics play a crucial role in maintaining proper hydration levels and electrolyte balance under heat stress.</p>
+ </div>
+ <div class="science-card">
+ <h3>Oxidative Stress</h3>
+ <p>Genetics impact resilience to cellular stress caused by extreme heat exposure, affecting overall heat tolerance.</p>
+ </div>
+ </div>
+ <div style="margin-top: 3rem; text-align: center; background: var(--white); padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+ <h3><i class="fa-solid fa-flask"></i> Laboratory Medicine</h3>
+ <p style="margin-top: 1rem;">Biomarker screening identifies genetic indicators to predict individual responses to heat. We utilize non-invasive methods (saliva and sweat analysis) for early prediction, empowering timely healthcare interventions without the need for blood draws.</p>
+ </div>
+ </section>
+
+ <!-- Ethics, Sustainability & Future -->
+ <section id="ethics" style="background: #e9ecef;">
+ <h2 class="section-title">Responsible Innovation</h2>
+ <div class="ethics-split">
+ <div class="ethics-content">
+ <h3>Ethics & Data Privacy</h3>
+ <ul>
+ <li><i class="fa-solid fa-shield-halved"></i> <strong>No Real Data:</strong> The project does not utilize any real genetic data; all data is simulated.</li>
+ <li><i class="fa-solid fa-ban"></i> <strong>No Storage:</strong> Participant privacy is strictly maintained with no personal data storage.</li>
+ <li><i class="fa-solid fa-graduation-cap"></i> <strong>Educational Purpose:</strong> The Gene Patch serves as an educational prototype to demonstrate concepts safely and ethically.</li>
+ </ul>
+ </div>
+ <div class="ethics-content">
+ <h3>Sustainability Impact</h3>
+ <ul>
+ <li><i class="fa-solid fa-truck-medical"></i> <strong>Emergency Reduction:</strong> Early detection reduces emergency cases and minimizes strain on healthcare resources.</li>
+ <li><i class="fa-solid fa-hospital"></i> <strong>Hospital Burden:</strong> Proactive measures help decrease hospital admissions, allowing for better resource allocation.</li>
+ <li><i class="fa-solid fa-heart-pulse"></i> <strong>Preventive Approach:</strong> Shifts focus toward long-term preventive medicine, fostering a healthier population and reducing costs.</li>
+ </ul>
+ </div>
+ </div>
+
+ <div style="margin-top: 4rem; background: var(--white); padding: 2rem; border-radius: 15px; border-left: 5px solid var(--primary);">
+ <h3>Limitations & Future Vision</h3>
+ <p style="margin-bottom: 1rem;"><strong>Current Limitation:</strong> The Gene Patch remains a conceptual prototype requiring further clinical validation.</p>
+ <p><strong>Future Applications:</strong> Seamless integration with existing smart wearables, AI-driven personalized medicine, and climate-based health protection systems.</p>
+ </div>
+ </section>
+
+ <!-- Footer -->
+ <footer>
+ <h3>Smart Genetic Screening Device</h3>
+ <p>Liwa International School - Team 3</p>
+ <div class="team-list">
+ <span>Ckyan Ycong</span>
+ <span>Zendi Cordero</span>
+ <span>Houda Al Houssaine</span>
+ </div>
+ <p>Supervisor: Ms. Shabna Riaz</p>
+ <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">&copy; 2024 Gene Patch Initiative. Educational Prototype.</p>
+ </footer>
+
+ <!-- Smooth Scrolling and Simulation Script -->
+ <script>
+ // Smooth Scrolling
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ anchor.addEventListener('click', function (e) {
+ e.preventDefault();
+ document.querySelector(this.getAttribute('href')).scrollIntoView({
+ behavior: 'smooth'
+ });
+ });
+ });
+
+ // Simulation Logic
+ const geneticsInput = document.getElementById('genetics');
+ const hydrationInput = document.getElementById('hydration');
+ const tempInput = document.getElementById('temp');
+ 
+ const hydrationVal = document.getElementById('hydration-val');
+ const tempVal = document.getElementById('temp-val');
+ 
+ const gauge = document.getElementById('gauge');
+ const riskLabel = document.getElementById('risk-label');
+ const riskAdvice = document.getElementById('risk-advice');
+
+ function updateSimulation() {
+ // Get values
+ const genetics = parseInt(geneticsInput.value);
+ const hydration = parseInt(hydrationInput.value);
+ const temp = parseInt(tempInput.value);
+
+ // Update labels
+ hydrationVal.textContent = hydration + '%';
+ tempVal.textContent = temp + '°C';
+
+ // Calculate Risk Score (Heuristic Logic)
+ // Base risk from genetics (1-3)
+ let riskScore = genetics * 5; 
+ 
+ // Hydration risk (lower hydration = higher risk)
+ riskScore += (100 - hydration) * 0.4;
+ 
+ // Heat risk (higher temp = higher risk)
+ if (temp > 30) {
+ riskScore += (temp - 30) * 1.5;
+ }
+
+ // Cap score at 100
+ riskScore = Math.min(Math.round(riskScore), 100);
+ 
+ // Update Gauge Number
+ gauge.textContent = riskScore;
+
+ // Determine Risk Level & UI Updates
+ if (riskScore < 35) {
+ // Safe
+ gauge.style.borderColor = 'var(--safe)';
+ riskLabel.textContent = 'LOW RISK';
+ riskLabel.style.color = 'var(--safe)';
+ riskAdvice.textContent = 'Hydration levels optimal. Heat exposure is within safe limits.';
+ } else if (riskScore >= 35 && riskScore < 65) {
+ // Warning
+ gauge.style.borderColor = 'var(--warning)';
+ riskLabel.textContent = 'MODERATE RISK';
+ riskLabel.style.color = 'var(--warning)';
+ riskAdvice.textContent = 'Notice: Hydration is dropping or heat is rising. Drink water and seek shade soon.';
+ } else {
+ // Danger
+ gauge.style.borderColor = 'var(--danger)';
+ riskLabel.textContent = 'HIGH RISK';
+ riskLabel.style.color = 'var(--danger)';
+ riskAdvice.textContent = 'ALERT: Immediate action required. High risk of heat stress or dehydration. Seek cooling immediately.';
+ }
+ }
+
+ // Add event listeners to all inputs
+ geneticsInput.addEventListener('change', updateSimulation);
+ hydrationInput.addEventListener('input', updateSimulation);
+ tempInput.addEventListener('input', updateSimulation);
+
+ // Initialize on load
+ updateSimulation();
+ </script>
+</body>
+</html>
